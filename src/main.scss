@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import "tokens.css";
 
@@ -25,10 +25,6 @@ body {
     font-family: 'Roboto', sans-serif;
     //width: 100%;
     //display: flex;
-    //justify-content: center;
-    //align-items: center;
-
-    //display: grid;
     //justify-content: center;
 }
 
@@ -80,7 +76,8 @@ nav {
             height: 56px;
             align-items: center;
             padding: 16px;
-            @include text-correction(var(--md-sys-typescale-title-large-font-family-style),
+            @include text-correction(
+                var(--md-sys-typescale-title-large-font-family-style),
                 var(--md-sys-typescale-title-large-font-weight),
                 var(--md-sys-typescale-title-large-font-size),
                 var(--md-sys-typescale-title-large-line-height),
@@ -100,12 +97,16 @@ nav {
                 width: 24px;
                 height: 24px;
                 z-index: 1;
+
+                .material-symbols-outlined {
+                    font-variation-settings: 'FILL' var(--fill-active, 0);
+                }
             }
 
             &__label {
                 @include text-correction(
                     var(--md-sys-typescale-label-large-font-family-style),
-                    var(--md-sys-typescale-label-large-font-weight),
+                    var(--large-font-weight-active,--md-sys-typescale-label-large-font-weight), // !!!
                     var(--md-sys-typescale-label-large-font-size),
                     var(--md-sys-typescale-label-large-line-height),
                     var(--md-sys-typescale-label-large-letter-spacing));
@@ -116,14 +117,16 @@ nav {
                 --layout-opacity: 0.8;
                 --md-sys-icon-color: var(--md-sys-color-on-secondary-container);
                 --md-sys-label-text-color: var(--md-sys-color-on-secondary-container);
+                --large-font-weight-active: 700; // !
+                --fill-active: 1; // !
 
-                .section__item__lable {
-                    font-weight: 700;
-                }
+                //.section__item__lable {
+                //    font-weight: 700;
+                //}
 
-                .material-symbols-outlined {
-                    font-variation-settings: 'FILL' 1;
-                }
+                //.material-symbols-outlined {
+                //    font-variation-settings: 'FILL' 1;
+                //}
             }
 
             &:hover:not(&--active) {
@@ -153,7 +156,6 @@ nav {
         //}
 
         .section {
-            //padding-top: 10px;
             justify-content: center;
             align-items: center;
             gap: 12px;
@@ -173,6 +175,7 @@ nav {
 
                 &--active {
                     --md-sys-label-text-color: var(--md-sys-color-on-surface);
+                    --large-font-weight-active: 700;
                 }
 
                 &::before {
@@ -180,9 +183,10 @@ nav {
                     border-radius: 16px;
                 }
 
-                &__info {
-                    @include text-correction(var(--md-sys-typescale-label-medium-font-family-style),
-                        var(--md-sys-typescale-label-medium-font-weight),
+                &__label {
+                    @include text-correction(
+                        var(--md-sys-typescale-label-medium-font-family-style),
+                        var(--large-font-weight-active, --md-sys-typescale-label-medium-font-weight),
                         var(--md-sys-typescale-label-medium-font-size),
                         var(--md-sys-typescale-label-medium-line-height),
                         var(--md-sys-typescale-label-medium-letter-spacing));
